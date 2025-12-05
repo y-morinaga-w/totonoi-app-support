@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Totonoi App - サポート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        .faq-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: #666;
+        }
+        .contact-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+        .contact-box p {
+            margin-bottom: 10px;
+        }
+        .email {
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .nav a {
+            display: inline-block;
+            margin-right: 20px;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border-radius: 6px;
+        }
+        .nav a:hover {
+            background: #764ba2;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧖 Totonoi App</h1>
+        <p style="font-size: 1.1em; color: #888; margin-bottom: 30px;">ととのいを記録するアプリ</p>
+
+        <h2>お問い合わせ</h2>
+        <div class="contact-box">
+            <p>ご質問、不具合の報告、機能要望などがございましたら、以下のメールアドレスまでお気軽にお問い合わせください。</p>
+            <p class="email">📧 support@totonoi.app</p>
+            <p style="font-size: 0.9em; color: #888;">※返信には数日かかる場合がございます。あらかじめご了承ください。</p>
+        </div>
+
+        <h2>よくある質問</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Q: HealthKitの権限が取得できません</div>
+            <div class="faq-answer">
+                A: iPhoneの設定 > プライバシーとセキュリティ > ヘルスケア から「Totonoi App」を選択し、以下の権限をすべて有効にしてください：
+                <ul>
+                    <li>心拍数（読み取り）</li>
+                    <li>心拍変動（読み取り）</li>
+                    <li>ワークアウト（読み取り・書き込み）</li>
+                </ul>
+                また、iPhoneの設定 > アプリ > データアクセスとデバイス > Totonoi App からも全ての権限を有効にしてください。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: WatchとiPhoneの同期が遅い</div>
+            <div class="faq-answer">
+                A: WatchとiPhoneを前面にし、数秒お待ちください。接続時に未配信分を自動的に再送します。それでも同期されない場合は、両方のアプリを再起動してください。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 履歴が空で表示されません</div>
+            <div class="faq-answer">
+                A: Watchでセッション完了後に履歴が保存されているかをご確認ください。また、HealthKitの権限が正しく設定されているか確認してください。セッションはHealthKitに保存されるため、HealthKitの権限が必要です。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 心拍数が表示されません</div>
+            <div class="faq-answer">
+                A: セッション中に心拍数が表示されない場合は、以下を確認してください：
+                <ul>
+                    <li>Apple Watchが正しく装着されているか</li>
+                    <li>HealthKitの心拍数読み取り権限が有効か</li>
+                    <li>セッション中に心拍監視が有効になっているか（設定で確認）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: 設定の同期ができません</div>
+            <div class="faq-answer">
+                A: iPhoneの「Watchに送信」ボタンをタップして設定を送信してください。Watchで設定を保存した場合は自動的にiPhoneに送信されます。WatchとiPhoneが接続されていることを確認してください。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: グループ機能の使い方を教えてください</div>
+            <div class="faq-answer">
+                A: 「ととのいフレンド」タブからグループを作成し、友達を招待できます。グループに参加すると、メンバー同士でセッション履歴を共有できます。招待リンクを送信するか、グループIDを共有して参加してもらえます。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: ととのいスコアはどのように計算されますか？</div>
+            <div class="faq-answer">
+                A: ととのいスコアは以下の要素から算出されます：
+                <ul>
+                    <li>心拍変動スコア（0-40点）：サウナでの心拍上昇、水風呂での下降、休憩での安定度</li>
+                    <li>HRV改善スコア（0-40点）：セッション開始から終了までのHRV改善率</li>
+                    <li>完遂度スコア（0-20点）：目標セット数の達成率</li>
+                </ul>
+                これらを合計し、個人差補正を適用して100点満点で評価します。
+            </div>
+        </div>
+
+        <h2>アプリについて</h2>
+        <p>Totonoi Appは、サウナと水風呂のセッションを記録し、「ととのい」を数値化して管理するアプリです。Apple Watchと連携して、心拍数やHRV（心拍変動）をリアルタイムで計測し、あなたの「ととのい」を可視化します。</p>
+
+        <h3>主な機能</h3>
+        <ul>
+            <li>リアルタイム心拍数・HRV計測</li>
+            <li>ととのいスコアの自動計算</li>
+            <li>セッション履歴の記録・分析</li>
+            <li>グループ機能でセッション共有</li>
+            <li>施設情報の管理</li>
+            <li>AIによるセッション評価</li>
+            <li>発汗量推定</li>
+        </ul>
+
+        <div class="nav">
+            <a href="privacy.html">プライバシーポリシー</a>
+        </div>
+    </div>
+</body>
+</html>
+
