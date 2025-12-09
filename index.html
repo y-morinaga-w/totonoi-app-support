@@ -329,114 +329,10 @@
         </section>
 
         <section class="section">
-            <h2 id="faq">よくある質問</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">Watchアプリが自動でインストールされない</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>iPhoneの「Watch」アプリ > 「マイウォッチ」> 「一般」> 「Appの自動インストール」がオンになっているか確認してください。</p>
-                            <p>自動インストールされない場合、iPhoneの「Watch」アプリ > 「マイウォッチ」タブで最下部にスクロールし、「利用可能なApp」から手動でインストールできます。</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">HealthKitの権限が取得できません</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>iPhoneの設定 > プライバシーとセキュリティ > ヘルスケア から「Totonoi App」を選択し、以下の権限をすべて有効にしてください：</p>
-                            <ul>
-                                <li>心拍数（読み取り）</li>
-                                <li>心拍変動（読み取り）</li>
-                                <li>ワークアウト（読み取り・書き込み）</li>
-                            </ul>
-                            <p>また、iPhoneの設定 > アプリ > データアクセスとデバイス > Totonoi App からも全ての権限を有効にしてください。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">WatchとiPhoneの同期が遅い</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>WatchとiPhoneを前面にし、数秒お待ちください。接続時に未配信分を自動的に再送します。それでも同期されない場合は、両方のアプリを再起動してください。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">履歴が空で表示されません</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Watchでセッション完了後に履歴が保存されているかをご確認ください。また、HealthKitの権限が正しく設定されているか確認してください。セッションはHealthKitに保存されるため、HealthKitの権限が必要です。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">心拍数が表示されません</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>セッション中に心拍数が表示されない場合は、以下を確認してください：</p>
-                            <ul>
-                                <li>Apple Watchが正しく装着されているか</li>
-                                <li>HealthKitの心拍数読み取り権限が有効か</li>
-                                <li>セッション中に心拍監視が有効になっているか（設定で確認）</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">設定の同期ができません</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>iPhoneの「Watchに送信」ボタンをタップして設定を送信してください。Watchで設定を保存した場合は自動的にiPhoneに送信されます。WatchとiPhoneが接続されていることを確認してください。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">グループ機能の使い方を教えてください</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>「ととのいフレンド」タブからグループを作成し、友達を招待できます。グループに参加すると、メンバー同士でセッション履歴を共有できます。招待リンクを送信するか、グループIDを共有して参加してもらえます。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">ととのいスコアはどのように計算されますか？</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>ととのいスコアは以下の要素から算出されます：</p>
-                            <ul>
-                                <li>心拍変動スコア（0-40点）：サウナでの心拍上昇、水風呂での下降、休憩での安定度</li>
-                                <li>HRV改善スコア（0-40点）：セッション開始から終了までのHRV改善率</li>
-                                <li>完遂度スコア（0-20点）：目標セット数の達成率</li>
-                            </ul>
-                            <p>これらを合計し、個人差補正を適用して100点満点で評価します。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">アカウントを削除したい</button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>アプリ内からアカウントを削除できます。以下の手順で削除できます：</p>
-                            <ol>
-                                <li>「ととのいフレンド」タブを開く</li>
-                                <li>画面右上のメニュー（⋯）をタップ</li>
-                                <li>「アカウントを削除」を選択</li>
-                                <li>確認画面で「削除」をタップ</li>
-                            </ol>
-                            <p><strong>注意</strong>：アカウントを削除すると、すべてのデータ（ユーザー情報、セッション履歴、グループ情報）が永久に削除されます。この操作は取り消せません。削除前に必要なデータをバックアップしてください。</p>
-                            <p>HealthKitに保存されたデータは削除されません。HealthKitデータを削除する場合は、iPhoneの「ヘルスケア」アプリから手動で削除してください。</p>
-                        </div>
-                    </div>
-                </div>
+            <h2>よくある質問・使い方</h2>
+            <div class="contact-card">
+                <p>よくある質問や使い方については、専用ページをご覧ください。</p>
+                <p style="margin-top: 16px;"><a href="faq.html" class="email-link">📖 よくある質問・使い方を見る</a></p>
             </div>
         </section>
 
@@ -458,6 +354,7 @@
         </section>
 
         <div class="nav">
+            <a href="faq.html" class="nav-link">よくある質問・使い方</a>
             <a href="privacy.html" class="nav-link">プライバシーポリシー</a>
         </div>
     </div>

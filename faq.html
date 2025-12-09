@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 - Totonoi App</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #007aff;
+            --accent-hover: #0051d5;
+            --border: #d2d2d7;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #000000;
+                --bg-secondary: #1d1d1f;
+                --text-primary: #f5f5f7;
+                --text-secondary: #86868b;
+                --accent: #0a84ff;
+                --accent-hover: #409cff;
+                --border: #424245;
+                --card-bg: #1d1d1f;
+                --shadow: rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            min-height: 100vh;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 16px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        h1 .app-icon {
+            height: 32px;
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .faq-container {
+            margin-top: 24px;
+        }
+        
+        .faq-item {
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 16px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease, color 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+            color: var(--accent);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 2000px;
+            padding: 0 0 16px 0;
+        }
+        
+        .faq-answer-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .faq-answer-content ul, .faq-answer-content ol {
+            margin: 12px 0 12px 24px;
+        }
+        
+        .faq-answer-content li {
+            margin-bottom: 8px;
+        }
+        
+        .faq-answer-content p {
+            margin-bottom: 12px;
+        }
+        
+        .faq-answer-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .nav {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .nav-link {
+            display: inline-block;
+            font-size: 17px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 400;
+            margin-right: 24px;
+            -webkit-tap-highlight-color: rgba(0, 122, 255, 0.2);
+        }
+        
+        .nav-link:hover, .nav-link:active {
+            text-decoration: underline;
+        }
+        
+        .usage-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .usage-section h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        
+        .usage-section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        
+        .step-list {
+            list-style: none;
+            margin: 16px 0;
+            padding: 0;
+        }
+        
+        .step-list li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 32px;
+            position: relative;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .step-list {
+            counter-reset: step-counter;
+        }
+        
+        @media (max-width: 734px) {
+            .container {
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 15px;
+            }
+            
+            h2 {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+            
+            h3 {
+                font-size: 19px;
+            }
+            
+            .faq-question {
+                font-size: 15px;
+                padding: 14px 0;
+            }
+            
+            .usage-section {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="img/barrel_sauna.png" alt="Totonoi App" class="app-icon"> Totonoi App</h1>
+            <p class="subtitle">よくある質問</p>
+        </header>
+
+        <!-- 使い方セクション -->
+        <section class="section">
+            <h2>使い方</h2>
+            
+            <div class="usage-section">
+                <h3>📱 基本的な使い方</h3>
+                <p>Totonoi Appは、Apple Watchと連携してサウナ・水風呂のセッションを記録するアプリです。</p>
+                <ol class="step-list">
+                    <li>iPhoneでアプリを開き、設定を確認します（目標セット数、サウナ・水風呂・休憩の時間など）</li>
+                    <li>Watchでセッションを開始します</li>
+                    <li>セッション中は、Watch画面をタップしてチャートとBPM表示を切り替えられます</li>
+                    <li>セッション完了後、自動的に履歴が保存されます</li>
+                    <li>iPhoneで履歴を確認し、ととのいスコアや詳細データを閲覧できます</li>
+                </ol>
+            </div>
+
+            <div class="usage-section">
+                <h3>⌚ Watchアプリの使い方</h3>
+                <p>Watchアプリでは、セッションの開始・管理を行います。</p>
+                <ol class="step-list">
+                    <li>ホーム画面で「ととのい開始」をタップ</li>
+                    <li>設定を確認し、カウントダウン後にセッションが開始されます</li>
+                    <li>セッション中は、画面をタップしてチャート/BPM/HRV表示を切り替えられます</li>
+                    <li>各セット完了後、「次へ」をタップして次のセットに進みます</li>
+                    <li>全セット完了後、「終了」をタップしてセッションを終了します</li>
+                </ol>
+            </div>
+
+            <div class="usage-section">
+                <h3>👥 グループ機能の使い方</h3>
+                <p>「ととのいフレンド」機能で、友達とセッション履歴を共有できます。</p>
+                <ol class="step-list">
+                    <li>「ととのいフレンド」タブを開きます</li>
+                    <li>「グループを作成」をタップして新しいグループを作成します</li>
+                    <li>グループ名と画像を設定します</li>
+                    <li>「招待リンクを生成」をタップして、リンクを友達に送信します</li>
+                    <li>友達がリンクをタップすると、グループに参加できます</li>
+                    <li>グループメンバーは、お互いのセッション履歴を閲覧できます</li>
+                </ol>
+            </div>
+
+            <div class="usage-section">
+                <h3>📊 ととのいスコアについて</h3>
+                <p>ととのいスコアは、セッションの質を数値化したものです。</p>
+                <p>以下の要素から算出されます：</p>
+                <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                    <li><strong>心拍変動スコア（0-40点）</strong>：サウナでの心拍上昇、水風呂での下降、休憩での安定度</li>
+                    <li><strong>HRV改善スコア（0-40点）</strong>：セッション開始から終了までのHRV改善率</li>
+                    <li><strong>完遂度スコア（0-20点）</strong>：目標セット数の達成率</li>
+                </ul>
+                <p>これらを合計し、個人差補正を適用して100点満点で評価します。</p>
+            </div>
+        </section>
+
+        <!-- よくある質問セクション -->
+        <section class="section">
+            <h2 id="faq">よくある質問</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Watchアプリが自動でインストールされない</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>iPhoneの「Watch」アプリ > 「マイウォッチ」> 「一般」> 「Appの自動インストール」がオンになっているか確認してください。</p>
+                            <p>自動インストールされない場合、iPhoneの「Watch」アプリ > 「マイウォッチ」タブで最下部にスクロールし、「利用可能なApp」から手動でインストールできます。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">HealthKitの権限が取得できません</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>iPhoneの設定 > プライバシーとセキュリティ > ヘルスケア から「Totonoi App」を選択し、以下の権限をすべて有効にしてください：</p>
+                            <ul>
+                                <li>心拍数（読み取り）</li>
+                                <li>心拍変動（読み取り）</li>
+                                <li>ワークアウト（読み取り・書き込み）</li>
+                            </ul>
+                            <p>また、iPhoneの設定 > アプリ > データアクセスとデバイス > Totonoi App からも全ての権限を有効にしてください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">WatchとiPhoneの同期が遅い</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>WatchとiPhoneを前面にし、数秒お待ちください。接続時に未配信分を自動的に再送します。それでも同期されない場合は、両方のアプリを再起動してください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">履歴が空で表示されません</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Watchでセッション完了後に履歴が保存されているかをご確認ください。また、HealthKitの権限が正しく設定されているか確認してください。セッションはHealthKitに保存されるため、HealthKitの権限が必要です。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">心拍数が表示されません</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>セッション中に心拍数が表示されない場合は、以下を確認してください：</p>
+                            <ul>
+                                <li>Apple Watchが正しく装着されているか</li>
+                                <li>HealthKitの心拍数読み取り権限が有効か</li>
+                                <li>セッション中に心拍監視が有効になっているか（設定で確認）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">設定の同期ができません</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>iPhoneの「Watchに送信」ボタンをタップして設定を送信してください。Watchで設定を保存した場合は自動的にiPhoneに送信されます。WatchとiPhoneが接続されていることを確認してください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">セッション中に画面を切り替えたい</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Watchのセッション画面では、画面のどこかをタップすることで、チャート表示、BPM表示、HRV表示を切り替えられます。HRV表示は、心拍数が閾値を超えた場合のみ表示されます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">グループに招待されたけど参加できない</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>招待リンクをタップしてもアプリが開かない場合は、以下を確認してください：</p>
+                            <ul>
+                                <li>アプリがインストールされているか</li>
+                                <li>招待リンクが正しいか（totonoi://invite?groupID=...の形式）</li>
+                                <li>アプリを再起動してから再度リンクをタップしてみてください</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">グループから退出した後、データはどうなりますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>グループから退出すると、以降のセッションデータは共有されません。また、グループに残っているメンバーは、退出したメンバーの過去のセッションデータを閲覧することはできません。ただし、あなたのセッションデータ自体は削除されず、あなた自身の履歴として引き続き閲覧できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">アカウントを削除したい</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>アプリ内からアカウントを削除できます。以下の手順で削除できます：</p>
+                            <ol>
+                                <li>「ととのいフレンド」タブを開く</li>
+                                <li>画面右上のメニュー（⋯）をタップ</li>
+                                <li>「アカウントを削除」を選択</li>
+                                <li>確認画面で「削除」をタップ</li>
+                            </ol>
+                            <p><strong>注意</strong>：アカウントを削除すると、すべてのデータ（ユーザー情報、セッション履歴、グループ情報）が永久に削除されます。この操作は取り消せません。削除前に必要なデータをバックアップしてください。</p>
+                            <p>HealthKitに保存されたデータは削除されません。HealthKitデータを削除する場合は、iPhoneの「ヘルスケア」アプリから手動で削除してください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">プロフィール画像を変更したい</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>「ととのいフレンド」タブで、プロフィール画像をタップすると編集画面が開きます。カメラで撮影するか、フォトライブラリから選択できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">施設情報を追加・編集したい</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>ホーム画面の「施設を追加」または「施設を編集」から、よく行くサウナ施設の情報を登録できます。登録した施設は、セッション履歴に紐付けて記録できます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="nav">
+            <a href="index.html" class="nav-link">サポートページに戻る</a>
+            <a href="privacy.html" class="nav-link">プライバシーポリシー</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // すべてのFAQを閉じる
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // クリックされたFAQを開く（既に開いていた場合は閉じる）
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // URLのハッシュが#faqの場合、FAQセクションにスクロール
+            if (window.location.hash === '#faq') {
+                const faqSection = document.getElementById('faq');
+                if (faqSection) {
+                    setTimeout(() => {
+                        faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
