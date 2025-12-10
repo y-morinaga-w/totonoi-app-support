@@ -213,23 +213,87 @@
         }
         
         .usage-section {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-            border: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+            overflow: hidden;
         }
         
-        .usage-section h3 {
-            margin-top: 0;
+        .usage-section:first-child {
+            border-top: none;
+        }
+        
+        .usage-section:last-child {
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .usage-question {
+            width: 100%;
+            padding: 16px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 17px;
+            font-weight: 400;
             color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .usage-section p {
+        .usage-question:hover {
+            color: var(--accent);
+        }
+        
+        .usage-question::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease, color 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        
+        .usage-section.active .usage-question::after {
+            transform: rotate(45deg);
+            color: var(--accent);
+        }
+        
+        .usage-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 0;
+        }
+        
+        .usage-section.active .usage-answer {
+            max-height: 5000px;
+            padding: 0 0 16px 0;
+        }
+        
+        .usage-answer-content {
             font-size: 15px;
             line-height: 1.6;
             color: var(--text-secondary);
+        }
+        
+        .usage-answer-content p {
             margin-bottom: 12px;
+        }
+        
+        .usage-answer-content ul, .usage-answer-content ol {
+            margin: 12px 0 12px 24px;
+        }
+        
+        .usage-answer-content li {
+            margin-bottom: 8px;
+        }
+        
+        .usage-answer-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
         .step-list {
@@ -296,8 +360,9 @@
                 padding: 14px 0;
             }
             
-            .usage-section {
-                padding: 16px;
+            .usage-question {
+                font-size: 15px;
+                padding: 14px 0;
             }
         }
     </style>
@@ -310,57 +375,340 @@
         </header>
 
         <!-- 使い方セクション -->
-        <section class="section">
+        <section class="section" id="使い方">
             <h2>使い方</h2>
-            
-            <div class="usage-section">
-                <h3>📱 基本的な使い方</h3>
-                <p>Totonoi Appは、Apple Watchと連携してサウナ・水風呂のセッションを記録するアプリです。</p>
-                <ol class="step-list">
-                    <li>iPhoneでアプリを開き、設定を確認します（目標セット数、サウナ・水風呂・休憩の時間など）</li>
-                    <li>Watchでセッションを開始します</li>
-                    <li>セッション中は、Watch画面をタップしてチャートとBPM表示を切り替えられます</li>
-                    <li>セッション完了後、自動的に履歴が保存されます</li>
-                    <li>iPhoneで履歴を確認し、ととのいスコアや詳細データを閲覧できます</li>
-                </ol>
-            </div>
+            <div class="faq-container">
+                <div class="usage-section">
+                    <button class="usage-question">📱 基本的な使い方</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>Totonoi Appは、Apple Watchと連携してサウナ・水風呂のととのいを記録するアプリです。</p>
+                            <ol class="step-list">
+                                <li>iPhoneでアプリを開き、設定を確認します（目標セット数、サウナ・水風呂・休憩の時間など）</li>
+                                <li>Apple Watchアプリでととのいを開始します</li>
+                                <li>サウナ中は、Watchアプリ画面をタップして様々な機能を切り替えられます</li>
+                                <li>ととのい完了後、自動的に履歴が保存されます（ワークアウトに記録されます）</li>
+                                <li>iPhoneで履歴を確認し、ととのいスコアや詳細データを閲覧できます</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="usage-section">
-                <h3>⌚ Watchアプリの使い方</h3>
-                <p>Watchアプリでは、セッションの開始・管理を行います。</p>
-                <ol class="step-list">
-                    <li>ホーム画面で「ととのい開始」をタップ</li>
-                    <li>設定を確認し、カウントダウン後にセッションが開始されます</li>
-                    <li>セッション中は、画面をタップしてチャート/BPM/HRV表示を切り替えられます</li>
-                    <li>各セット完了後、「次へ」をタップして次のセットに進みます</li>
-                    <li>全セット完了後、「終了」をタップしてセッションを終了します</li>
-                </ol>
-            </div>
+                <div class="usage-section">
+                    <button class="usage-question">⚙️ 設定について</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>iPhoneまたはWatchの設定画面で、ととのいの詳細設定を行えます。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">タイマーモード（カウントアップ/カウントダウン）</h4>
+                            <p>サウナ、水風呂、休憩の各フェーズで、カウントアップ（ストップウォッチ）またはカウントダウン（タイマー）を選択できます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>カウントダウン</strong>：設定した時間までカウントダウンします。時間が来ると自動的にコントロール画面に遷移します</li>
+                                <li><strong>カウントアップ</strong>：経過時間をカウントアップします。手動で「次へ」をタップするまで続きます</li>
+                            </ul>
+                            <p>カウントアップ中は、「カウントダウンに戻す」ボタンで残り時間を計算してカウントダウンに切り替えられます。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">オートモード</h4>
+                            <p>オートモードを有効にすると、タイマーが終了すると自動的に次のフェーズに進みます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>サウナ→水風呂：自動遷移</li>
+                                <li>水風呂→休憩：自動遷移</li>
+                                <li>休憩→サウナ：カウントダウンモードの場合のみ自動遷移（最終セット以外）</li>
+                                <p>※ なお、各フェーズ間には移動フェーズがあります。移動フェーズもカウントダウン設定固定となります。</p>
+                                <p>　移動フェーズは、サウナから水風呂、水風呂から休憩、休憩からサウナへの移動時間を個別に設定できます。</p>
+                            </ul>
+                            <p><strong>注意</strong>：オートモード時は、サウナと水風呂のタイマーはカウントダウン固定になります。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">移動フェーズ</h4>
+                            <p>サウナから水風呂、水風呂から休憩、休憩からサウナへの移動時間を個別に設定できます。移動フェーズには3種類のポリシーがあります：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>移動なし</strong>：移動フェーズをスキップし、すぐに次のフェーズに進みます</li>
+                                <li><strong>秒数指定</strong>：設定した秒数だけ移動フェーズが続きます。移動フェーズ中は定期的にバイブレーションが発生し、時間が経過すると自動的に次のフェーズに進みます（オートモード時）</li>
+                                <li><strong>ボタン操作</strong>：移動フェーズが開始されますが、時間制限はありません。「次へ」ボタンをタップするまで移動フェーズが続きます。移動フェーズ中は定期的にバイブレーションが発生します</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="usage-section">
-                <h3>👥 グループ機能の使い方</h3>
-                <p>「ととのいフレンド」機能で、友達とセッション履歴を共有できます。</p>
-                <ol class="step-list">
-                    <li>「ととのいフレンド」タブを開きます</li>
-                    <li>「グループを作成」をタップして新しいグループを作成します</li>
-                    <li>グループ名と画像を設定します</li>
-                    <li>「招待リンクを生成」をタップして、リンクを友達に送信します</li>
-                    <li>友達がリンクをタップすると、グループに参加できます</li>
-                    <li>グループメンバーは、お互いのセッション履歴を閲覧できます</li>
-                </ol>
-            </div>
+                <div class="usage-section">
+                    <button class="usage-question">🏠 ホームサウナ設定</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>よく行くサウナ施設の設定を保存しておくと、その施設でのととのいを簡単に開始できます（最大3件まで登録可能）。</p>
+                            <ol class="step-list">
+                                <li>iPhoneの設定画面で「ホームサウナ設定」を開きます</li>
+                                <li>「ホームサウナを追加」をタップします</li>
+                                <li>施設を選択または新規登録します</li>
+                                <li>サウナ時間、水風呂時間、休憩時間、目標セット数、心拍数閾値などを設定します</li>
+                                <li>各移動フェーズの時間も設定できます</li>
+                                <li>保存すると、Watchアプリのホーム画面にホームサウナが表示されます</li>
+                            </ol>
+                            <p><strong>ホームサウナから開始する場合</strong>：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>ホームサウナから開始すると、保存した設定が自動的に適用されます</li>
+                                <li>オートモードが自動的に有効になります</li>
+                                <li>移動フェーズポリシーが「秒数指定」に固定されます</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="usage-section">
-                <h3>📊 ととのいスコアについて</h3>
-                <p>ととのいスコアは、セッションの質を数値化したものです。</p>
-                <p>以下の要素から算出されます：</p>
-                <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
-                    <li><strong>心拍変動スコア（0-40点）</strong>：サウナでの心拍上昇、水風呂での下降、休憩での安定度</li>
-                    <li><strong>HRV改善スコア（0-40点）</strong>：セッション開始から終了までのHRV改善率</li>
-                    <li><strong>完遂度スコア（0-20点）</strong>：目標セット数の達成率</li>
-                </ul>
-                <p>これらを合計し、個人差補正を適用して100点満点で評価します。</p>
+                <div class="usage-section">
+                    <button class="usage-question">⌚ サウナ中のWatchアプリの操作</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>サウナ中は、様々な方法で画面を操作できます。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">画面のタップ</h4>
+                            <p>サウナ画面のどこかをタップすると、以下の表示を切り替えられます：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>チャート表示</strong>：心拍数の推移をグラフで表示</li>
+                                <li><strong>BPM表示</strong>：現在の心拍数を大きく表示</li>
+                                <li><strong>HRV表示（心拍変動表示）</strong>：現在の心拍変動を表示</li>
+                            </ul>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">Digital Crown（デジタルクラウン）</h4>
+                            <p>サウナ画面でDigital Crownを使用できます：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>上に14ノッチ以上回す</strong>：次のフェーズに進みます（10秒間は操作を受け付けません）</li>
+                                <li><strong>下に10ノッチ以上回す</strong>：コントロール画面に戻ります（10秒間は操作を受け付けません）</li>
+                            </ul>
+                            <p>Digital Crownは、サウナ画面（メイン画面）でのみ有効です。コントロール画面では使用できません。</p>
+                            <p>水滴などで操作がしづらい場合には、Digital Crownを使用してください。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">心拍数閾値とアラート</h4>
+                            <p>サウナ中に心拍数が設定した閾値を超えると、以下の動作が発生します：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>継続的なバイブレーションが開始されます（3秒間隔）</li>
+                                <li>心拍数が閾値以下に下がると、自動的にバイブレーションが停止します</li>
+                            </ul>
+                            <p>バイブレーションは一時停止できます。一時停止すると、60秒間アラートが抑制されます。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">高温時のアラート</h4>
+                            <p>Apple Watchの温度が上昇すると、自動的にアラートが表示されます：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>高温警告</strong>：アラートが表示されます。また、5秒おきに現在までのととのいが自動的に保存されます</li>
+                                <li><strong>致命的高温</strong>：Apple Watchが強制的にシャットダウンされます</li>
+                            </ul>
+                            <p>高温アラートは、心拍数アラートとは独立して動作します。</p>
+                            <p>Apple Watchが再起動すると、自動保存されたととのいの記録から開始できるポップアップが表示されます。</p>
+                            
+                            <h4 style="font-size: 17px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--text-primary);">フェーズの種類</h4>
+                            <p>サウナ中は、以下のフェーズを順番に進みます：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>サウナ中</strong>：サウナにいる時間。心拍数監視が有効な場合、閾値超過でアラートが発生</li>
+                                <li><strong>水風呂へ移動</strong>：サウナから水風呂への移動時間。バイブレーションが発生</li>
+                                <li><strong>水風呂中</strong>：水風呂にいる時間</li>
+                                <li><strong>休憩へ移動</strong>：水風呂から休憩場所への移動時間。バイブレーションが発生</li>
+                                <li><strong>休憩中</strong>：休憩している時間。カウントアップまたはカウントダウンを選択可能</li>
+                                <li><strong>サウナへ移動</strong>：休憩場所からサウナへの移動時間。バイブレーションが発生</li>
+                            </ul>
+                            <p>各フェーズの時間は、設定画面で個別に設定できます。</p>
+                            <p>設定次第では、移動フェーズがない場合もあります。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">👥 グループ機能の使い方</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>「ととのいフレンド」機能で、フレンドにととのい履歴を共有できます。</p>
+                            <ol class="step-list">
+                                <li>「ととのいフレンド」タブを開きます</li>
+                                <li>「グループを作成」をタップして新しいグループを作成します</li>
+                                <li>グループ名と画像を設定します</li>
+                                <li>「招待リンクを生成」をタップして、リンクを友達に連携します</li>
+                                <li>友達がリンクをタップし、招待一覧から「参加」ボタンを押すと、グループに参加できます</li>
+                                <li>グループメンバーは、お互いのととのい履歴を閲覧できます</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">⚡ クイック計測モード</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>クイック計測は、フェーズやセット数を気にせず自由にサウナ・水風呂を楽しみたい場合に使用するモードです。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>フェーズの概念がなく、カウントアップタイマーのみ</li>
+                                <li>心拍数とHRV（心拍変動）の計測は通常のととのいと同様に行われます</li>
+                                <li>履歴には「クイック計測」として記録されます。ととのいスコアや発汗量推定は計算されません。</li>
+                            </ul>
+                            <p>Watchのホーム画面から「クイック測定」をタップして開始できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">⏸️ ととのいの一時停止・再開</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>サウナ中は、コントロール画面から一時停止・再開ができます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>一時停止中は、タイマーが停止します</li>
+                                <li>再開すると、タイマーが続きから再開されます</li>
+                                <li>カウントアップモード（フリータイマー）の場合、再開時に繰り返しバイブレーションも再開されます（休憩中でミュート設定の場合は除く）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">⏱️ タイマーの延長</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>コントロール画面から延長ボタンをタップすると、タイマーを延長できます。</p>
+                            <p>オートモードの場合は、サウナフェーズの残り時間が30秒を切ると自動的に延長オプションポップアップが表示されます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>「+30秒」または「+1分」ボタンでタイマーを延長できます</li>
+                                <li>延長はサウナフェーズのカウントダウンモードでのみ利用可能です</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">📊 ととのいスコアについて</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>ととのいスコアは、ととのいの質を簡易的に数値化したものです。正確なととのいスコアは、AI評価機能を使用してください。</p>
+                            <p>以下の要素から算出されます：</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>心拍変動スコア（0-40点）</strong>：サウナでの心拍上昇、水風呂での下降、休憩での安定度</li>
+                                <li><strong>HRV改善スコア（0-40点）</strong>：ととのい開始から終了までのHRV（心拍変動）改善率</li>
+                                <li><strong>完遂度スコア（0-20点）</strong>：目標セット数の達成率</li>
+                            </ul>
+                            <p>これらを合計し、個人差補正を適用して100点満点で評価します。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">💧 発汗量推定について</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>ととのい完了後、自動的に発汗量が推定されます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>サウナ中の時間と平均心拍数から推定されます</li>
+                                <li>施設の温度情報を入力すると、より正確な推定が可能です</li>
+                                <li>推定方法は「心拍数補正」が使用されます（初期設定）</li>
+                                <li>推奨水分補給量も自動計算されます（発汗量の約1.35倍）</li>
+                            </ul>
+                            <p>履歴詳細画面で、施設情報や温度を追加・編集すると、発汗量が再計算されます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">📝 ととのいメモの追加・編集</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>ととのい完了後、履歴詳細画面からメモを追加・編集できます。</p>
+                            <ol class="step-list">
+                                <li>履歴画面でととのい履歴をタップして詳細画面を開きます</li>
+                                <li>「ととのいメモ」ボタンをタップします</li>
+                                <li>メモ、タグ、施設情報、温度情報を入力できます</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">🤖 AI評価機能</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>ととのい完了後、AIによる評価を取得できます。</p>
+                            <ol class="step-list">
+                                <li>履歴詳細画面で「AI評価」アイコンをタップします</li>
+                                <li>自分の感じ方を選択します（極上のととのい / 満足！ / そこそこ / 不完全燃焼）</li>
+                                <li>AIがととのいデータを分析し、評価を生成します</li>
+                                <li>評価結果には、スコア、星評価、総評、理由、改善のヒントが含まれます</li>
+                            </ol>
+                            <p><strong>注意</strong>：AI評価は一度取得すると、クラウドデータベースに保存されます。同じととのいの評価を再取得することはできません。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">📱 履歴の閲覧とフィルター</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>iPhoneの履歴画面では、様々な方法でととのい履歴を閲覧できます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>日付フィルター</strong>：カレンダーから特定の日付を選択してフィルターできます</li>
+                                <li><strong>タグフィルター</strong>：ととのい履歴に付けたタグでフィルターできます</li>
+                                <li><strong>施設フィルター</strong>：特定の施設でのととのい履歴のみを表示できます</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">🏢 施設情報の追加・編集</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>よく行くサウナ施設の情報を登録・編集できます。</p>
+                            <ol class="step-list">
+                                <li>ホーム画面の「施設を追加」または「施設を編集」をタップします</li>
+                                <li>施設名、住所、都道府県、施設タイプ、性別（男性/女性/混浴）を入力します</li>
+                                <li>温度情報（サウナ温度、水風呂温度）を入力できます（オプション）</li>
+                                <li>施設の特徴（ロウリュ、屋外サウナなど）を設定できます（オプション）</li>
+                                <li>保存すると、施設情報が提出され、管理者の承認後に公開されます</li>
+                            </ol>
+                            <p><strong>注意</strong>：施設情報の追加・編集は承認制です。承認されると、他のユーザーもその施設情報を利用できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">📡 データの同期について</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>ととのいデータは、Appleのヘルスケアアプリ（HealthKit）を介してWatchとiPhoneの間で同期されます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li>ととのい完了後、自動的にHealthKitに保存されます</li>
+                                <li>iPhoneアプリは、HealthKitから履歴を読み込んで表示します</li>
+                                <li>WatchとiPhoneが接続されていない場合でも、後で接続されると自動的に同期されます</li>
+                                <li>クラウドデータベースには、ととのいメモ、施設情報、タグなどの追加情報が保存されます</li>
+                            </ul>
+                            <p><strong>注意</strong>：HealthKitの権限が正しく設定されている必要があります。設定 > プライバシーとセキュリティ > ヘルスケア から権限を確認してください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">🔔 通知機能</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>アプリ内通知で、重要な情報を受け取れます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>施設提出の承認通知</strong>：提出した施設情報が承認された場合に通知されます</li>
+                                <li><strong>未読通知の管理</strong>：通知画面で未読/既読を管理できます</li>
+                                <li><strong>通知の種類</strong>：情報、成功、警告、エラーの4種類があります</li>
+                            </ul>
+                            <p>ホーム画面の通知アイコンで、未読通知数を確認できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-section">
+                    <button class="usage-question">👥 グループでのととのい共有</button>
+                    <div class="usage-answer">
+                        <div class="usage-answer-content">
+                            <p>グループに参加すると、メンバー同士でととのい履歴を共有できます。</p>
+                            <ul style="margin: 12px 0 12px 24px; color: var(--text-secondary);">
+                                <li><strong>共有されるデータ</strong>：ととのい日時、合計時間、完了セット数、平均/最大/最小心拍数、ととのいスコア、発汗量推定、施設情報、メモ、タグ、AI評価（ニックネーム、プロフィール画像も共有されますが、これらは任意設定で個人を特定できない情報です。個人を特定できる情報は当アプリでは一切扱っていません）</li>
+                                <li><strong>リアルタイム共有</strong>：ととのい完了後、自動的にグループメンバーに共有されます</li>
+                                <li><strong>過去データの閲覧</strong>：全てのととのい履歴がグループメンバー同士で共有されます</li>
+                            </ul>
+                            <p>グループから退出すると、対象ユーザのととのい履歴は過去分含め全て共有が停止されます。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
         </section>
 
         <!-- よくある質問セクション -->
@@ -396,7 +744,7 @@
                     <button class="faq-question">WatchとiPhoneの同期が遅い</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>WatchとiPhoneを前面にし、数秒お待ちください。接続時に未配信分を自動的に再送します。それでも同期されない場合は、両方のアプリを再起動してください。</p>
+                            <p>WatchアプリとiPhoneのアプリを前面にし、数秒お待ちください。接続時に未配信分を自動的に再送します。それでも同期されない場合は、両方のアプリを再起動してください。</p>
                         </div>
                     </div>
                 </div>
@@ -405,7 +753,7 @@
                     <button class="faq-question">履歴が空で表示されません</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>Watchでセッション完了後に履歴が保存されているかをご確認ください。また、HealthKitの権限が正しく設定されているか確認してください。セッションはHealthKitに保存されるため、HealthKitの権限が必要です。</p>
+                            <p>Apple Watchでととのい完了後に履歴が保存されているかをご確認ください。また、HealthKitの権限が正しく設定されているか確認してください。ととのい履歴はHealthKitに保存されるため、HealthKitの権限が必要です。</p>
                         </div>
                     </div>
                 </div>
@@ -414,11 +762,12 @@
                     <button class="faq-question">心拍数が表示されません</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>セッション中に心拍数が表示されない場合は、以下を確認してください：</p>
+                            <p>サウナ中に心拍数が表示されない場合は、以下を確認してください：</p>
                             <ul>
                                 <li>Apple Watchが正しく装着されているか</li>
                                 <li>HealthKitの心拍数読み取り権限が有効か</li>
-                                <li>セッション中に心拍監視が有効になっているか（設定で確認）</li>
+                                <li>サウナ中に心拍監視が有効になっているか（設定で確認）</li>
+                                <li>充電が十分にできているか</li>
                             </ul>
                         </div>
                     </div>
@@ -428,16 +777,16 @@
                     <button class="faq-question">設定の同期ができません</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>iPhoneの「Watchに送信」ボタンをタップして設定を送信してください。Watchで設定を保存した場合は自動的にiPhoneに送信されます。WatchとiPhoneが接続されていることを確認してください。</p>
+                            <p>iPhoneの「Watchに送信」ボタンをタップして設定を送信してください。Apple Watchで設定を保存した場合は自動的にiPhoneに送信されます。Apple WatchとiPhoneが接続されていることを確認してください。</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">セッション中に画面を切り替えたい</button>
+                    <button class="faq-question">サウナ中に画面を切り替えたい</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>Watchのセッション画面では、画面のどこかをタップすることで、チャート表示、BPM表示、HRV表示を切り替えられます。HRV表示は、心拍数が閾値を超えた場合のみ表示されます。</p>
+                            <p>Watchアプリのサウナ画面では、画面のどこかをタップすることで、チャート表示、BPM（心拍数）表示、HRV（心拍変動）表示を切り替えられます。HRV表示は、心拍数が閾値を超えた場合のみ表示されます。</p>
                         </div>
                     </div>
                 </div>
@@ -452,6 +801,7 @@
                                 <li>招待リンクが正しいか（totonoi://invite?groupID=...の形式）</li>
                                 <li>アプリを再起動してから再度リンクをタップしてみてください</li>
                             </ul>
+                            招待リンクタップ後、ととのいフレンド左上の招待一覧から「参加」ボタンを押すとグループに参加できます。
                         </div>
                     </div>
                 </div>
@@ -460,13 +810,13 @@
                     <button class="faq-question">グループから退出した後、データはどうなりますか？</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>グループから退出すると、以降のセッションデータは共有されません。また、グループに残っているメンバーは、退出したメンバーの過去のセッションデータを閲覧することはできません。ただし、あなたのセッションデータ自体は削除されず、あなた自身の履歴として引き続き閲覧できます。</p>
+                            <p>グループから退出すると、退出したユーザのととのい履歴は過去分含め全て共有が停止されます。</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">アカウントを削除したい</button>
+                    <button class="faq-question">ととのいフレンドのアカウントを削除したい</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <p>アプリ内からアカウントを削除できます。以下の手順で削除できます：</p>
@@ -476,7 +826,7 @@
                                 <li>「アカウントを削除」を選択</li>
                                 <li>確認画面で「削除」をタップ</li>
                             </ol>
-                            <p><strong>注意</strong>：アカウントを削除すると、すべてのデータ（ユーザー情報、セッション履歴、グループ情報）が永久に削除されます。この操作は取り消せません。削除前に必要なデータをバックアップしてください。</p>
+                            <p><strong>注意</strong>：アカウントを削除すると、すべてのデータ（ユーザー情報、ととのい履歴、グループ情報）が永久に削除されます。この操作は取り消せません。</p>
                             <p>HealthKitに保存されたデータは削除されません。HealthKitデータを削除する場合は、iPhoneの「ヘルスケア」アプリから手動で削除してください。</p>
                         </div>
                     </div>
@@ -495,7 +845,202 @@
                     <button class="faq-question">施設情報を追加・編集したい</button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>ホーム画面の「施設を追加」または「施設を編集」から、よく行くサウナ施設の情報を登録できます。登録した施設は、セッション履歴に紐付けて記録できます。</p>
+                            <p>ホーム画面の「施設を追加」または「施設を編集」から、よく行くサウナ施設の情報を登録できます。登録した施設は、ととのい履歴に紐付けて記録できます。</p>
+                            <p>施設情報の追加・編集は承認制です。提出後、管理者が承認すると、他のユーザーもその施設情報を利用できるようになります。承認されるとアプリ内通知でお知らせします。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">クイック計測と通常のととのいの違いは？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>クイック計測は、フェーズを気にせず自由にサウナ・水風呂を楽しみたい場合に使用するモードです。</p>
+                            <ul>
+                                <li>通常のととのい：サウナ→水風呂→休憩のフェーズを繰り返し、各フェーズでタイマーを設定できます</li>
+                                <li>クイック計測：フェーズの概念がなく、カウントアップタイマーのみ。自由にサウナ・水風呂を楽しめます</li>
+                            </ul>
+                            <p>クイック計測モードでは、ととのいスコアや発汗量推定は計算されません。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">サウナ中にタイマーを延長できますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>オートモード中は、サウナフェーズのカウントダウンの場合、残り時間が30秒を切ると自動的に延長オプションが表示されます。「+30秒」または「+1分」ボタンでタイマーを延長できます。コントロール画面にも延長ボタンが表示されます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">ととのいを一時停止できますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>はい、コントロール画面から一時停止・再開ができます。一時停止中は、タイマーが停止します。再開すると、タイマーが続きから再開されます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">発汗量はどのように推定されますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>発汗量は、サウナ中の時間と平均心拍数から自動推定されます。施設の温度情報を入力すると、より正確な推定が可能です。推定方法は「心拍数補正」が使用されます。履歴詳細画面で、施設情報や温度を追加・編集すると、発汗量が再計算されます。推奨水分補給量も自動計算されます（発汗量の約1.35倍）。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「発汗量推定について」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">AI評価はどのように取得できますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>履歴詳細画面で「AI評価」アイコンをタップし、自分の感じ方を選択すると、AIがととのいデータを分析して評価を生成します。評価結果には、スコア、星評価、総評、理由、改善のヒントが含まれます。一度AI評価を取得すると、再度取得することはできません。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「AI評価機能」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">履歴をフィルターできますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>はい、履歴画面で日付フィルター、タグフィルター、施設フィルターを使用できます。大量の履歴がある場合、自動的に次のページが読み込まれます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「履歴の閲覧とフィルター」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">ととのいメモは後から追加できますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>はい、履歴詳細画面から「ととのいメモ」ボタンをタップして、メモ、タグ、施設情報、温度情報を追加・編集できます。施設情報を追加すると、発汗量が再計算されます。保存すると、クラウドデータベースとAppleのヘルスケアアプリ（HealthKit）の両方に保存されます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「ととのいメモの追加・編集」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">WatchとiPhoneのデータ同期はどうなっていますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>ととのいデータは、Appleのヘルスケアアプリ（HealthKit）を介してWatchとiPhoneの間で同期されます。ととのい完了後、自動的にHealthKitに保存され、iPhoneアプリはHealthKitから履歴を読み込んで表示します。WatchとiPhoneが接続されていない場合でも、後で接続されると自動的に同期されます。クラウドデータベースには、ととのいメモ、施設情報、タグなどの追加情報が保存されます。</p>
+                            <p>HealthKitの権限が正しく設定されている必要があります。設定 > プライバシーとセキュリティ > ヘルスケア から権限を確認してください。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「データの同期について」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">グループで共有されるデータは何ですか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>グループに参加すると、ととのい日時、合計時間、完了セット数、平均/最大/最小心拍数、ととのいスコア、発汗量推定、施設情報、メモ、タグ、AI評価、ニックネーム、プロフィール画像（これらは任意設定で個人を特定できない情報です）がメンバー同士で共有されます。</p>
+                            <p>個人を特定できる情報（メールアドレス、電話番号、実名など）は一切共有されません。グループから退出すると、以降のととのいは共有されません。また、退出したメンバーの過去のととのいデータは、グループに残っているメンバーが閲覧することはできません。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「グループでのととのい共有」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Digital Crown（デジタルクラウン）の使い方は？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>サウナ画面でDigital Crownを使用できます。上に14ノッチ回すと次のフェーズに進み、下に10ノッチ回すとコントロール画面に戻ります（それぞれ10秒間は操作を受け付けません）。</p>
+                            <p>Digital Crownは、サウナ画面（メイン画面）でのみ有効です。コントロール画面では使用できません。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「サウナ中のWatchアプリの操作」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">心拍数アラートはどのように動作しますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>サウナ中に心拍数が設定した閾値を超えると、継続的なバイブレーション（3秒間隔）が開始され、HRV（心拍変動）表示ページが自動的に表示されます。心拍数が閾値以下に下がると、自動的にバイブレーションが停止します。</p>
+                            <p>バイブレーションは一時停止できます。一時停止すると、60秒間アラートが抑制されます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「サウナ中のWatchアプリの操作」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">高温時のアラートについて</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Apple Watchの温度が上昇すると、自動的にアラートが表示されます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「サウナ中のApple Watchの操作」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">オートモードとは何ですか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>オートモードを有効にすると、タイマーが終了すると自動的に次のフェーズに進みます。サウナ→水風呂、水風呂→休憩は自動遷移し、休憩→サウナはカウントダウンモードの場合のみ自動遷移します。</p>
+                            <p><strong>注意</strong>：オートモード時は、サウナと水風呂のタイマーはカウントダウン固定になります。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「設定について」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">タイマーモード（カウントアップ/カウントダウン）の違いは？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>サウナ、水風呂、休憩の各フェーズで、カウントアップ（ストップウォッチ）またはカウントダウン（タイマー）を選択できます。カウントダウンは設定した時間までカウントダウンし、時間が来ると自動的にコントロール画面に遷移します。カウントアップは経過時間をカウントアップし、手動で「次へ」をタップするまで続きます。</p>
+                            <p>カウントアップ中は、「カウントダウンに戻す」ボタンで残り時間を計算してカウントダウンに切り替えられます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「設定について」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">移動フェーズとは何ですか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>サウナから水風呂、水風呂から休憩、休憩からサウナへの移動時間を個別に設定できます。移動フェーズには3種類のポリシーがあります：</p>
+                            <ul>
+                                <li><strong>移動なし</strong>：移動フェーズをスキップし、すぐに次のフェーズに進みます</li>
+                                <li><strong>秒数指定</strong>：設定した秒数だけ移動フェーズが続きます。移動フェーズ中は定期的にバイブレーションが発生し、時間が経過すると自動的に次のフェーズに進みます（オートモード時）</li>
+                                <li><strong>ボタン操作</strong>：移動フェーズが開始されますが、時間制限はありません。「次へ」ボタンをタップするまで移動フェーズが続きます。移動フェーズ中は定期的にバイブレーションが発生します</li>
+                            </ul>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「設定について」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">ホームサウナ設定とは何ですか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>よく行くサウナ施設の設定を保存しておくと、その施設でのととのいを簡単に開始できます（最大3件まで登録可能）。</p>
+                            <p>ホームサウナから開始すると、保存した設定が自動的に適用されます。また、オートモードが自動的に有効になり、移動フェーズポリシーが「秒数指定」に固定されます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「ホームサウナ設定」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">ととのいスコアはどのように計算されますか？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>ととのいスコアは、ととのいの質を数値化したものです。心拍変動スコア（0-40点）、HRV（心拍変動）改善スコア（0-40点）、完遂度スコア（0-20点）を合計し、個人差補正を適用して100点満点で評価します。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「ととのいスコアについて」を参照してください</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">通知機能について</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>アプリ内通知で、重要な情報を受け取れます。施設提出の承認通知、未読通知の管理、情報・成功・警告・エラーの4種類の通知があります。ホーム画面の通知アイコンで、未読通知数を確認できます。</p>
+                            <p><a href="#使い方" style="color: var(--accent); text-decoration: underline;">詳細は使い方セクションの「通知機能」を参照してください</a></p>
                         </div>
                     </div>
                 </div>
@@ -503,13 +1048,14 @@
         </section>
 
         <div class="nav">
-            <a href="index.html" class="nav-link">サポートページに戻る</a>
-            <a href="privacy.html" class="nav-link">プライバシーポリシー</a>
+            <p><a href="index.html" class="nav-link">サポートページに戻る</a></p>
+            <p><a href="privacy.html" class="nav-link">プライバシーポリシー</a></p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // FAQアコーディオン
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
@@ -523,6 +1069,26 @@
                     });
                     
                     // クリックされたFAQを開く（既に開いていた場合は閉じる）
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // 使い方アコーディオン
+            const usageItems = document.querySelectorAll('.usage-section');
+            
+            usageItems.forEach(item => {
+                const question = item.querySelector('.usage-question');
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // すべての使い方項目を閉じる
+                    usageItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // クリックされた項目を開く（既に開いていた場合は閉じる）
                     if (!isActive) {
                         item.classList.add('active');
                     }
