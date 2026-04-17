@@ -4,392 +4,337 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Totonoi App - サポート</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --accent: #007aff;
-            --accent-hover: #0051d5;
-            --border: #d2d2d7;
-            --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --primary: #007AFF;
+            --primary-gradient: linear-gradient(135deg, #007AFF 0%, #00C6FF 100%);
+            --bg-glass: rgba(255, 255, 255, 0.7);
+            --bg-body: #F2F2F7;
+            --text-main: #1D1D1F;
+            --text-muted: #86868B;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --accent-orange: #FF9500;
+            --accent-green: #34C759;
+            --accent-purple: #AF52DE;
         }
-        
+
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-primary: #000000;
-                --bg-secondary: #1d1d1f;
-                --text-primary: #f5f5f7;
-                --text-secondary: #86868b;
-                --accent: #0a84ff;
-                --accent-hover: #409cff;
-                --border: #424245;
-                --card-bg: #1d1d1f;
-                --shadow: rgba(0, 0, 0, 0.3);
+                --primary: #0A84FF;
+                --primary-gradient: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
+                --bg-glass: rgba(28, 28, 30, 0.8);
+                --bg-body: #000000;
+                --text-main: #F5F5F7;
+                --text-muted: #8E8E93;
+                --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+                --border-color: rgba(255, 255, 255, 0.12);
             }
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            min-height: 100vh;
-            padding: 0;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container {
-            max-width: 980px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 40px 20px;
         }
-        
+
         header {
             text-align: center;
-            margin-bottom: 32px;
-            padding-top: 16px;
+            margin-bottom: 60px;
+            padding-top: 20px;
         }
-        
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.003em;
-            margin-bottom: 6px;
-            color: var(--text-primary);
+
+        .app-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+            transition: transform 0.3s ease;
         }
-        
-        h1 .app-icon {
-            height: 32px;
-            width: auto;
-            display: inline-block;
-            vertical-align: middle;
+
+        .app-icon-wrapper:hover {
+            transform: scale(1.05);
         }
-        
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .subtitle {
-            font-size: 17px;
-            color: var(--text-secondary);
+            font-size: 18px;
+            color: var(--text-muted);
             font-weight: 400;
         }
-        
-        .info-banner {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 32px;
-            border: 1px solid var(--border);
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
-        .info-banner p {
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--text-primary);
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
         }
-        
-        .section {
-            margin-bottom: 32px;
-        }
-        
+
         h2 {
             font-size: 24px;
             font-weight: 600;
-            letter-spacing: -0.003em;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-        
-        .contact-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
             margin-bottom: 20px;
-        }
-        
-        .contact-card p {
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        
-        .email-link {
-            font-size: 17px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            word-break: break-all;
-            -webkit-tap-highlight-color: rgba(0, 122, 255, 0.2);
-        }
-        
-        .email-link:hover, .email-link:active {
-            text-decoration: underline;
-        }
-        
-        .faq-container {
-            margin-top: 24px;
-        }
-        
-        .faq-item {
-            border-top: 1px solid var(--border);
-            overflow: hidden;
-        }
-        
-        .faq-item:last-child {
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .faq-question {
-            width: 100%;
-            padding: 16px 0;
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: 17px;
-            font-weight: 400;
-            color: var(--text-primary);
-            cursor: pointer;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: color 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
+            gap: 12px;
         }
-        
-        .faq-question:hover {
-            color: var(--accent);
+
+        .icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 20px;
-            font-weight: 300;
-            color: var(--text-secondary);
-            transition: transform 0.3s ease, color 0.2s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
+
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 198, 255, 0.05));
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            color: var(--primary);
         }
-        
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-            color: var(--accent);
+
+        /* Contact Section */
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            margin-top: 10px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 0;
+
+        .email-btn:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
         }
-        
-        .faq-item.active .faq-answer {
-            max-height: 2000px;
-            padding: 0 0 16px 0;
+
+        /* Feature List */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
         }
-        
-        .faq-answer-content {
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
             font-size: 15px;
-            line-height: 1.5;
-            color: var(--text-secondary);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.03);
         }
-        
-        .faq-answer-content ul, .faq-answer-content ol {
-            margin: 10px 0 10px 20px;
+
+        @media (prefers-color-scheme: dark) {
+            .feature-item {
+                background: rgba(255, 255, 255, 0.05);
+            }
         }
-        
-        .faq-answer-content li {
-            margin-bottom: 6px;
+
+        .feature-dot {
+            color: var(--primary);
+            font-size: 18px;
+            flex-shrink: 0;
         }
-        
-        .faq-answer-content p {
-            margin-bottom: 10px;
-        }
-        
-        .about-section {
+
+        /* Navigation */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             margin-top: 40px;
         }
-        
-        .about-section p {
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-        
-        .features-list {
-            list-style: none;
-            margin: 16px 0;
-            padding: 0;
-        }
-        
-        .features-list li {
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            padding-left: 24px;
-            position: relative;
-        }
-        
-        .features-list li::before {
-            content: '•';
-            position: absolute;
-            left: 8px;
-            color: var(--accent);
-        }
-        
-        .nav {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .nav-link {
-            display: inline-block;
-            font-size: 17px;
-            color: var(--accent);
+
+        .nav-box {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
             text-decoration: none;
-            font-weight: 400;
-            -webkit-tap-highlight-color: rgba(0, 122, 255, 0.2);
+            color: var(--text-main);
+            transition: all 0.2s ease;
         }
-        
-        .nav-link:hover, .nav-link:active {
-            text-decoration: underline;
+
+        .nav-box:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
-        
-        @media (max-width: 734px) {
-            .container {
-                padding: 16px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            .subtitle {
-                font-size: 15px;
-            }
-            
-            h2 {
-                font-size: 22px;
-                margin-bottom: 12px;
-            }
-            
-            .faq-question {
-                font-size: 15px;
-                padding: 14px 0;
-            }
-            
-            .info-banner {
-                padding: 14px;
-                margin-bottom: 24px;
-            }
-            
-            .contact-card {
-                padding: 16px;
-                margin-bottom: 16px;
-            }
+
+        .nav-box div {
+            font-size: 24px;
+            margin-bottom: 8px;
         }
+
+        .nav-box span {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Micro-animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><img src="img/barrel_sauna.png" alt="Totonoi App" class="app-icon"> Totonoi App</h1>
-            <p class="subtitle">ととのいを記録するアプリ</p>
+        <header class="animate">
+            <div class="app-icon-wrapper">
+                <img src="img/barrel_sauna.png" alt="Totonoi App" class="app-icon">
+            </div>
+            <h1>Totonoi App</h1>
+            <p class="subtitle">究極のサウナ体験を、あなたの腕に。</p>
         </header>
 
-        <div class="info-banner">
-            <p><strong>📝 個人開発について</strong><br>
-            本アプリは個人開発で運営しています。まだまだ改善の余地があり、不具合や使いにくい部分があるかもしれませんが、少しずつ育てていきたいと思っています。不具合を見つけられた際は、お気軽にお問い合わせください。温かく見守っていただけると幸いです。</p>
+        <div class="glass-card info-banner animate delay-1">
+            <p style="font-weight: 600; margin-bottom: 8px;">📝 個人開発の想い</p>
+            <p style="font-size: 15px; line-height: 1.5;">本アプリはサウナ好きの個人開発者によって運営されています。皆様のフィードバックを元に、一歩ずつ最高のサウナツールへと進化させていきます。不具合やご要望があれば、ぜひお気軽にお聞かせください。</p>
         </div>
 
-        <section class="section">
-            <h2>お問い合わせ</h2>
-            <div class="contact-card">
-                <p>ご質問、不具合の報告、機能要望などがございましたら、以下のメールアドレスまでお気軽にお問い合わせください。</p>
-                <p><a href="mailto:totonoiapp@gmail.com" class="email-link">📧 totonoiapp@gmail.com</a></p>
-                <p style="font-size: 15px; color: var(--text-secondary); margin-top: 12px;">※返信には数日かかる場合がございます。あらかじめご了承ください。</p>
-                <p style="font-size: 15px; color: var(--text-secondary);">※不具合や改善点など、どんな小さなことでもお気軽にご報告いただけると助かります。</p>
+        <section class="glass-card animate delay-2">
+            <h2><div class="icon-box" style="background: rgba(0,122,255,0.1); color: var(--primary);">📧</div>お問い合わせ</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">ご質問、不具合の報告、新機能のご提案などはこちらから。</p>
+            <a href="mailto:totonoiapp@gmail.com" class="email-btn">メールを送信する</a>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 15px;">※通常、数日以内に返信いたします。</p>
+        </section>
+
+        <section class="glass-card animate delay-3">
+            <h2><div class="icon-box" style="background: rgba(175,82,222,0.1); color: var(--accent-purple);">✨</div>アプリの主な機能</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>STEP AUTO 計測</strong><br><small>歩数と姿勢でフェーズを自動検知</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>AI ととのい評価</strong><br><small>AIによる詳細なセッション分析</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>ととのいスコア</strong><br><small>心拍変動(HRV)に基づく科学的数値化</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>ホームサウナ設定</strong><br><small>お気に入り施設の設定をWatchへ同期</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>発汗量・水分補給推定</strong><br><small>心拍数から適切な補給量を算出</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>セーフロック機能</strong><br><small>サウナ室での誤操作を徹底防止</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>自動スナップショット</strong><br><small>高温・電池切れ時のセッション復元</small></div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot">●</span>
+                    <div><strong>グループ共有機能</strong><br><small>フレンドとサウナ活動を自動共有</small></div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>よくある質問・使い方</h2>
-            <div class="contact-card">
-                <p>よくある質問や使い方については、専用ページをご覧ください。</p>
-                <p style="margin-top: 16px;"><a href="faq.html" class="email-link">📖 よくある質問・使い方を見る</a></p>
-            </div>
-        </section>
-
-        <section class="section about-section">
-            <h2>アプリについて</h2>
-            <p>Totonoi Appは、サウナと水風呂のセッションを記録し、「ととのい」を数値化して管理するアプリです。Apple Watchと連携して、心拍数やHRV（心拍変動）をリアルタイムで計測し、あなたの「ととのい」を可視化します。</p>
-            <p>個人開発のため、まだまだ至らない点があるかもしれませんが、ユーザーの皆様と一緒に育てていきたいと思っています。ご意見・ご要望をお待ちしております。</p>
-
-            <h3 style="font-size: 21px; font-weight: 600; margin-top: 24px; margin-bottom: 12px; color: var(--text-primary);">主な機能</h3>
-            <ul class="features-list">
-                <li>リアルタイム心拍数・HRV計測</li>
-                <li>ととのいスコアの自動計算</li>
-                <li>セッション履歴の記録・分析</li>
-                <li>グループ機能でセッション共有</li>
-                <li>施設情報の管理</li>
-                <li>AIによるセッション評価</li>
-                <li>発汗量推定</li>
-            </ul>
-        </section>
-
-        <div class="nav">
-            <p><a href="faq.html" class="nav-link">よくある質問・使い方</a></p>
-            <p><a href="privacy.html" class="nav-link">プライバシーポリシー</a></p>
+        <div class="nav-grid animate delay-3" style="animation-delay: 0.4s;">
+            <a href="faq.html" class="nav-box">
+                <div>📖</div>
+                <span>よくある質問・使い方</span>
+            </a>
+            <a href="privacy.html" class="nav-box">
+                <div>🛡️</div>
+                <span>プライバシーポリシー</span>
+            </a>
         </div>
+
+        <footer>
+            <p>&copy; 2026 Totonoi App Project. All rights reserved.</p>
+        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', function() {
-                    const isActive = item.classList.contains('active');
-                    
-                    // すべてのFAQを閉じる
-                    faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
-                    });
-                    
-                    // クリックされたFAQを開く（既に開いていた場合は閉じる）
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
-                });
-            });
-            
-            // URLのハッシュが#faqの場合、FAQセクションにスクロール
-            if (window.location.hash === '#faq') {
-                const faqSection = document.getElementById('faq');
-                if (faqSection) {
-                    setTimeout(() => {
-                        faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                }
-            }
-        });
-    </script>
 </body>
 </html>
